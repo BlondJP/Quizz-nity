@@ -1,0 +1,42 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        orm:
+            entity:
+                class: AppBundle:User
+                property: username
+    role_hierarchy:
+        ROLE_USER:       ROLE_USER
+        ROLE_ADMIN:       ROLE_ADMIN
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN]
+        
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        secured_area:
+            anonymous: ~
+            pattern:    ^/
+            form_login:
+                login_path: sign-in
+                check_path: sign-in
+                default_target_path: quiz-to-choose
+            logout:
+                path:   logout
+                target: sign-in
+
+    encoders:
+        AppBundle\Entity\User: bcrypt
+
+    access_control:
+        - { path: ^/sign-in, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/quiz, roles: ROLE_USER }
+        - { path: ^/gameplay, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
+

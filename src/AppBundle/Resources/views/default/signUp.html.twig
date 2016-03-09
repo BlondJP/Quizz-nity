@@ -1,0 +1,38 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} | Inscription{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-lg-offset-3 col-lg-6">
+            <div class="signup-panel">
+                <div class="title">Inscription</div>
+
+                <div class="col-lg-offset-2 col-lg-8">
+                    
+                    {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_row(form.username) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.email) }}
+                        </div>
+                        <div class="form-group">
+                                {{ form_row(form.plainPassword.first) }}
+                        </div>
+                        <div class="form-group">
+                                 {{ form_row(form.plainPassword.second) }}
+                        </div>
+                        <button type="submit" class="col-lg-offset-4 btn btn-danger">S'inscrire !</button>
+                            {{ form_end(form) }}
+                    
+                </div>
+                <div class="col-lg-offset-2 col-lg-8">
+                    <hr />
+                    <p style="text-align: center;">Vous n'avez pas de compte? <a href="{{ path('sign-in') }}">Connectez-vous !</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,139 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Quiz
+ *
+ * @ORM\Table(name="quiz")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\QuizRepository")
+ */
+class Quiz
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=70)
+     */
+    private $nom;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="Question", mappedBy="quiz", cascade={"persist"}, fetch="EAGER")
+    */
+    private $questions;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="Gameplay", mappedBy="quiz")
+    */
+    private $gameplay;
+    
+    public function __construct()
+    {
+        $this->questions = new ArrayCollection();
+        $this->gameplay = new ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Quiz
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+    
+    public function getQuestions() {
+        return $this->questions;
+    }
+
+    /**
+     * Add questions
+     *
+     * @param \AppBundle\Entity\Question $questions
+     * @return Quiz
+     */
+    public function addQuestion(\AppBundle\Entity\Question $questions)
+    {
+        $this->questions[] = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param \AppBundle\Entity\Question $questions
+     */
+    public function removeQuestion(\AppBundle\Entity\Question $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Add gameplay
+     *
+     * @param \AppBundle\Entity\Gameplay $gameplay
+     * @return Quiz
+     */
+    public function addGameplay(\AppBundle\Entity\Gameplay $gameplay)
+    {
+        $this->gameplay[] = $gameplay;
+
+        return $this;
+    }
+
+    /**
+     * Remove gameplay
+     *
+     * @param \AppBundle\Entity\Gameplay $gameplay
+     */
+    public function removeGameplay(\AppBundle\Entity\Gameplay $gameplay)
+    {
+        $this->gameplay->removeElement($gameplay);
+    }
+
+    /**
+     * Get gameplay
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGameplay()
+    {
+        return $this->gameplay;
+    }
+}

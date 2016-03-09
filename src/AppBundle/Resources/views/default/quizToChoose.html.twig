@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} | All QuiZ {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/quizs.css') }}" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-lg-12" style="text-align: center; margin-top: 50px;">
+            <a href="{{ path('search-quiz') }}" class="btn btn-danger">Rechercher un quiz</a>
+        </div>
+        
+        {% for quiz in pagination %}
+            <div class="col-lg-6">
+                <div class="quiz-bloc">
+                    <div class="title"><a href="{{ path('quiz', {'id': quiz.id}) }}">{{ quiz.nom }}</a></div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {# display navigation #}
+    <div class="navigation container">
+        <div class="col-lg-6 col-lg-offset-3" style="text-align: center;">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}
+

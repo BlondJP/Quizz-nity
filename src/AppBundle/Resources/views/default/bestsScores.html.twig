@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} | Classements {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/quizs.css') }}" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        
+        {% for quiz in quizs %}
+            <div class="col-lg-6">
+                <div class="quiz-bloc">
+                    <div class="title">{{ quiz.nom }}</div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Pseudo</th>
+                                <th>Score</th>
+                                <th>Temps</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for gameplay in quiz.gameplay %}
+                                <tr>
+                                    <td>{{ gameplay.user.username }}</td>
+                                    <td>{{ gameplay.score }}/5</td>
+                                    <td>{{ gameplay.timeOfTheGame }} secondes</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

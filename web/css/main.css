@@ -1,0 +1,56 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1 mars 2016, 22:15:37
+    Author     : Michel
+*/
+
+body {
+    background-color: #f3f3f3;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    padding: 25px 0;
+    background-color: #ff5454;
+}
+
+.logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 50px;
+    color: #FFF;
+    text-align: center;
+}
+
+.logo .slogan {
+    display: block;
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.signup-panel {
+    margin: 50px 0;
+    background-color: #FFF;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(245,245,245,1);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(245,245,245,1);
+    box-shadow: 1px 1px 3px 0px rgba(245,245,245,1);
+    overflow: hidden;
+}
+
+.signup-panel .title {
+    padding: 25px 0;
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+    font-size: 30px;
+}
+
+form {
+    font-family: 'Fredoka One', cursive;
+}
+
+.btn {
+    font-family: 'Fredoka One', cursive;
+}

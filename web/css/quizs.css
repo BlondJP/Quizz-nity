@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2 mars 2016, 18:13:47
+    Author     : Michel
+*/
+
+.quiz-bloc {
+    margin: 50px 0;
+    background-color: #FFF;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(245,245,245,1);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(245,245,245,1);
+    box-shadow: 1px 1px 3px 0px rgba(245,245,245,1);
+    overflow: hidden;
+}
+
+.quiz-bloc .title {
+    padding: 25px 0;
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+    font-size: 30px;
+}
+
+.quiz-bloc .title a {
+    color: #000000;
+}
+
+.quiz-bloc:hover a {
+    color: #ff5454;
+    text-decoration: none;
+}
+
+.quiz-question {
+    padding: 25px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+}
+
+.quiz-bloc .answers-bloc {
+    padding: 15px 25px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+}
